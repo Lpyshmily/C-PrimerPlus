@@ -25,12 +25,33 @@ StringBad::StringBad()
 		<< "\" default object created\n";
 }
 
+StringBad::StringBad(const StringBad & st)
+{
+	num_strings++;
+	len = st.len;
+	str = new char[len + 1];
+	std::strcpy(str, st.str);
+	cout << num_strings << ": \"" << str
+		<< "\"object created\n";
+}
+
 StringBad::~StringBad()
 {
 	cout << "\"" << str << "\" object deleted, ";
 	--num_strings;
 	cout << num_strings << " left\n";
 	delete[] str;
+}
+
+StringBad & StringBad::operator=(const StringBad & st)
+{
+	if (this == &st)
+		return *this;
+	delete[] str;
+	len = st.len;
+	str = new char[len + 1];
+	std::strcpy(str, st.str);
+	return *this;
 }
 
 std::ostream & operator<<(std::ostream & os, const StringBad & st)

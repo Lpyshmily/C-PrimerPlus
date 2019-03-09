@@ -19,4 +19,4 @@ int StringBad::num_strings = 0;
 ```c++
 StringBad sailor = sports;
 ```
-
+**错误已修正**
